@@ -377,11 +377,11 @@ bs_div_6par_sharedpol<- function(df, BS=1000) {
 
 
 ### Example use;
-analyzedSIsites_mel69_autosome <- read_delim("../../Population_data/Melanogaster/analyzedSIsites_mel69_autosome", 
+analyzedSIsites_mel69_autosome_CChr <- read_delim("../../Population_data/Melanogaster/analyzedSIsites_mel69_autosome_CChr", 
                                              "\t", escape_double = FALSE, trim_ws = TRUE)
 
 
-Auto5SI_compMelvsSim<- mat10by10_reduceddat_create(analyzedSIsites_mel69_autosome)
+Auto5SI_compMelvsSim<- mat10by10_reduceddat_create(analyzedSIsites_mel69_autosome_CChr)
 
 denomATGC_auto<- denoms_create(Auto5SI_compMelvsSim)
 mats_auto<- premdf_create(Auto5SI_compMelvsSim)
