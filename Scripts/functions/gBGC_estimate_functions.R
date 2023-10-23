@@ -236,17 +236,16 @@ corrected_biases_VB15_wry<- function(df,M=69, psig=0.05) {
 
 
 ### Example use;
-source("Pol_estimate_functions.R")
-mel69_commonreduced5p_spectras_autosome <- read_delim("../../Intermediate_data/Spectras/Melanogaster/mel69_commonreduced5p_spectras_autosome", 
-                                             "\t", escape_double = FALSE, trim_ws = TRUE)
+#mel69_commonreduced5p_spectras_autosome <- read_delim("../../Intermediate_data/Spectras/Melanogaster/mel69_commonreduced5p_spectras_autosome", 
+#                                             "\t", escape_double = FALSE, trim_ws = TRUE)
 
 
-B_WChr<- optim(1, logl,data=mel69_commonreduced5p_spectras_autosome$Asymm,c=0, method = "BFGS")$par
+#B_WChr<- optim(1, logl,data=mel69_commonreduced5p_spectras_autosome$Asymm,c=0, method = "BFGS")$par
 
 
-B_WChr_ll1<- -optim(1, logl,data=mel69_commonreduced5p_spectras_autosome$Asymm,c=0, method = "BFGS")$value
-B_WChr_ll0<- -logl(gamma=0, data=mel69_commonreduced5p_spectras_autosome$Asymm,c=0)
+#B_WChr_ll1<- -optim(1, logl,data=mel69_commonreduced5p_spectras_autosome$Asymm,c=0, method = "BFGS")$value
+#B_WChr_ll0<- -logl(gamma=0, data=mel69_commonreduced5p_spectras_autosome$Asymm,c=0)
 
-likCI_WChr<-findUL(fun=myfun,MLE = B_WChr, dataf=mel69_commonreduced5p_spectras_autosome$Asymm)
-likCI_WChr$Low
-likCI_WChr$Up
+#likCI_WChr<-findUL(fun=myfun,MLE = B_WChr, dataf=mel69_commonreduced5p_spectras_autosome$Asymm)
+#likCI_WChr$Low
+#likCI_WChr$Up
