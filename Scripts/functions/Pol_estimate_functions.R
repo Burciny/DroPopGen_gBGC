@@ -230,32 +230,32 @@ bootstrap_pol_6par<- function(df, region="name", chr="chr", BS=1000, M=69) {
 }
 
 ### Example use;
-analyzedSIsites_mel69_autosome <- read_delim("../../Population_data/Melanogaster/analyzedSIsites_mel69_autosome", 
+analyzedSIsites_mel69_autosome_CChr <- read_delim("../../Population_data/Melanogaster/analyzedSIsites_mel69_autosome_CChr", 
                                              "\t", escape_double = FALSE, trim_ws = TRUE)
 
-spectra_auto<- spectra6_build(analyzedSIsites_mel69_autosome, M=69)
-whole_auto<- allrate_est(spectra_auto, region = "WChr",chr="Autosome")
-whole_auto<- as.data.frame(whole_auto)
-sapply(whole_auto,class)
-whole_auto[,3:10]<- lapply(whole_auto[,3:10], function(x) {as.numeric(as.character(x))})
+spectra_auto<- spectra6_build(analyzedSIsites_mel69_autosome_CChr, M=69)
+center_auto<- allrate_est(spectra_auto, region = "CChr",chr="Autosome")
+center_auto<- as.data.frame(center_auto)
+sapply(center_auto,class)
+center_auto[,3:10]<- lapply(center_auto[,3:10], function(x) {as.numeric(as.character(x))})
 
 
 ## Mutation matrix build 
 
-df=whole_auto
+df=center_auto
 
-Q_auto_whole <- t(matrix(c(0 , df$a, df$c, df$e, 
+Q_auto_center <- t(matrix(c(0 , df$a, df$c, df$e, 
                            df$a,   0 , df$e, df$c, 
                            df$b, df$d,   0 , df$f, 
                            df$d, df$b, df$f,   0 ), nrow=4, ncol=4))
-diag(Q_auto_whole) <- -rowSums(Q_auto_whole, na.rm=TRUE)	
-dimnames(Q_auto_whole) <- list(c("A", "T", "G", "C"), c("A", "T", "G", "C"))
+diag(Q_auto_center) <- -rowSums(Q_auto_center, na.rm=TRUE)	
+dimnames(Q_auto_center) <- list(c("A", "T", "G", "C"), c("A", "T", "G", "C"))
 
 
 ## Expected heterozygosity  
 
-diagQ<-c(Q_auto_whole[1,1], Q_auto_whole[2,2], Q_auto_whole[3,3], Q_auto_whole[4,4])
-pi<-1/2*c(whole_auto$beta,whole_auto$beta, 1-whole_auto$beta,1-whole_auto$beta)
+diagQ<-c(Q_auto_center[1,1], Q_auto_center[2,2], Q_auto_center[3,3], Q_auto_center[4,4])
+pi<-1/2*c(center_auto$beta,center_auto$beta, 1-center_auto$beta,1-center_auto$beta)
 
 sum(-pi*diagQ) # 0.0196
 ExpH<-sum(-pi*diagQ)
