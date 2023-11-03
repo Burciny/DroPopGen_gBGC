@@ -1,6 +1,6 @@
 This repository contains the data and scripts necessary to replicate the final results in the paper:
 
-Yıldırım B. and Vogl, C. (2023). The influence of GC-biased gene conversion in nonadaptive sequence evolution in short introns of Drosophila melanogaster. Preprint at https://www.biorxiv.org/content/10.1101/2023.06.14.544886v3.
+Yıldırım B. and Vogl, C. (2023). The influence of GC-biased gene conversion on nonadaptive sequence evolution in short introns of Drosophila melanogaster. Preprint at https://www.biorxiv.org/content/10.1101/2023.06.14.544886v3.
 
 ----
 The files in the repository are arranged as follows: 
